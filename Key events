@@ -1,0 +1,54 @@
+```
+import turtle
+import sys
+
+t = turtle.Turtle()
+wn = turtle.Screen()
+
+def menu():
+    moves = ['move forward','move backward','turn left','turn right','quit']
+    keys = ['F','B','L','R','Q']
+    a = 0
+    for i in range(5):
+        print('To '+ moves[a]+ ' , press '+ keys[a] +'.')
+        a += 1
+
+def finish():
+    playing = str((input('Wanna try again?: '))).lower()
+    if playing == 'y' or playing == 'yes':
+        main()
+    elif playing == 'n' or playing == 'no':
+        sys.exit()
+
+def main():
+    menu()
+
+def forward(pixels):
+    t.forward(pixels)
+
+def backward(pixels):
+    t.backward(pixels)
+
+def left(angle):
+    t.left(angle)
+
+def right(angle):
+    t.right(angle)
+
+wn.listen()
+wn.onkeypress(forward(100),'f')
+wn.onkeypress(backward(100),'b')
+wn.onkeypress(left(90),'l')
+wn.onkeypress(right(90),'r')
+
+
+
+
+try:
+    main()
+
+    while True:
+        wn.update()
+except turtle.Terminator:
+    pass
+```
